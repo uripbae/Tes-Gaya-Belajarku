@@ -13,64 +13,44 @@
             background: linear-gradient(135deg, #f6d365 0%, #fda085 100%);
             min-height: 100vh;
             overflow-x: hidden;
-            transition: background 1s ease;
-        }
-
-        .login-card-small {
-            background: rgba(255, 255, 255, 0.2);
-            backdrop-filter: blur(25px);
-            -webkit-backdrop-filter: blur(25px);
-            border-radius: 2.5rem;
-            box-shadow: 0 25px 50px rgba(0,0,0,0.15);
-            border: 1px solid rgba(255, 255, 255, 0.4);
-            width: 100%;
-            max-width: 380px;
-        }
-
-        .text-gradient {
-            background: linear-gradient(to right, #ffffff, #ffe4b5);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));
         }
 
         .glass-card {
-            background: rgba(255, 255, 255, 0.7);
-            backdrop-filter: blur(12px);
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(10px);
             border-radius: 2rem;
             box-shadow: 0 15px 35px rgba(0,0,0,0.1);
-            border: 2px solid rgba(255, 255, 255, 0.5);
-        }
-
-        .glass-popup {
-            background: rgba(255, 255, 255, 0.9) !important;
-            backdrop-filter: blur(15px) !important;
-            border-radius: 2rem;
-            box-shadow: 0 20px 50px rgba(0,0,0,0.15);
-            border: 2px solid rgba(255, 255, 255, 0.8);
+            border: 4px solid #ffffff;
         }
 
         .option-btn {
             transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             cursor: pointer;
-            background: rgba(255, 255, 255, 0.6);
         }
 
         .option-btn:hover {
-            transform: scale(1.02);
-            background: white;
+            transform: scale(1.05);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+
+        .option-btn:active {
+            transform: scale(0.95);
+        }
+
+        .progress-bar {
+            transition: width 0.5s ease-in-out;
         }
 
         .floating-emoji {
             position: fixed;
             z-index: -1;
             animation: float 6s ease-in-out infinite;
-            opacity: 0.6;
+            opacity: 0.5;
         }
 
         @keyframes float {
             0% { transform: translateY(0px) rotate(0deg); }
-            50% { transform: translateY(-30px) rotate(15deg); }
+            50% { transform: translateY(-20px) rotate(10deg); }
             100% { transform: translateY(0px) rotate(0deg); }
         }
 
@@ -78,250 +58,249 @@
             display: none !important;
         }
 
-        .bg-visual { background: linear-gradient(135deg, #a78bfa 0%, #7c3aed 100%) !important; }
-        .bg-auditori { background: linear-gradient(135deg, #6ee7b7 0%, #059669 100%) !important; }
-        .bg-kinestetik { background: linear-gradient(135deg, #fdba74 0%, #ea580c 100%) !important; }
-        .bg-multimodal { background: linear-gradient(135deg, #f472b6 0%, #6366f1 100%) !important; }
+        /* Overlay Styling */
+        .full-overlay {
+            background: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(6px);
+        }
     </style>
 </head>
-<body id="main-body" class="flex items-center justify-center p-4">
+<body class="flex items-center justify-center p-4">
 
-    <div class="floating-emoji text-6xl top-10 left-10">🎨</div>
-    <div class="floating-emoji text-6xl bottom-10 right-10" style="animation-delay: 1s;">🎧</div>
-    <div class="floating-emoji text-6xl top-1/2 right-20" style="animation-delay: 2s;">🏃</div>
-    <div class="floating-emoji text-6xl bottom-20 left-20" style="animation-delay: 3s;">📚</div>
+    <!-- Dekorasi Latar Belakang -->
+    <div class="floating-emoji text-5xl top-10 left-10">🎨</div>
+    <div class="floating-emoji text-5xl bottom-10 right-10" style="animation-delay: 1s;">🎧</div>
+    <div class="floating-emoji text-5xl top-1/2 right-20" style="animation-delay: 2s;">🏃</div>
+    <div class="floating-emoji text-5xl bottom-20 left-20" style="animation-delay: 3s;">📚</div>
 
-    <div id="app-container" class="w-full flex justify-center relative">
+    <div id="app-container" class="w-full max-w-2xl relative">
         
         <!-- Screen 1: Login -->
-        <div id="login-screen" class="login-card-small p-8 animate__animated animate__zoomIn text-center">
-            <div class="mb-6">
-                <div class="inline-block p-4 bg-gradient-to-br from-yellow-300 to-orange-400 rounded-3xl mb-4 shadow-lg border border-white/40">
-                    <svg class="w-12 h-12 text-white drop-shadow-md" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5s3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+        <div id="login-screen" class="glass-card p-8 animate__animated animate__zoomIn">
+            <div class="text-center mb-6">
+                <div class="inline-block p-4 bg-yellow-100 rounded-full mb-4">
+                    <svg class="w-16 h-16 text-yellow-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5s3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
                     </svg>
                 </div>
-                <h1 class="text-3xl font-black text-gradient mb-2 tracking-tight">Tes Gaya Belajar</h1>
-                <p class="text-white font-semibold text-sm bg-black/10 inline-block px-3 py-1 rounded-full border border-white/20">Ayo kenali potensimu! ✨</p>
+                <h1 class="text-3xl font-bold text-gray-800 mb-2">Tes Gaya Belajarku</h1>
+                <p class="text-gray-600">Kenali dirimu, temukan cara belajarmu yang paling asik!</p>
             </div>
             
             <div class="space-y-4">
-                <input type="text" id="student-name" placeholder="Nama kamu..." 
-                    class="w-full px-5 py-4 text-base border-2 border-white/30 rounded-2xl focus:outline-none focus:border-yellow-300 transition-all bg-white/20 placeholder-white/70 text-white font-bold shadow-inner">
-                
-                <button onclick="showInstructions()" class="w-full bg-gradient-to-r from-yellow-400 to-orange-500 text-white font-black py-4 rounded-2xl text-xl shadow-lg transition-all active:scale-95 transform hover:brightness-110 border-b-4 border-orange-700">
-                    Mulai Sekarang! 🚀
-                </button>
-            </div>
-            <p class="mt-4 text-xs text-black italic font-bold">Urip Ambaripto</p>
-        </div>
-
-        <!-- Overlay Pop-up Bagian Baru -->
-        <div id="section-overlay" class="fixed inset-0 z-[60] flex items-center justify-center p-4 hidden-screen bg-black/60 backdrop-blur-md">
-            <div class="glass-popup p-10 max-w-md w-full text-center animate__animated animate__jackInTheBox">
-                <div id="section-icon" class="text-6xl mb-4">📂</div>
-                <h3 class="text-gray-500 font-bold uppercase tracking-widest text-sm mb-2">Bagian Baru</h3>
-                <h2 id="section-title" class="text-3xl font-black text-gray-800 mb-6 leading-tight">...</h2>
-                <button onclick="closeSectionPopup()" class="bg-blue-600 text-white px-8 py-3 rounded-full font-bold shadow-lg hover:bg-blue-700 transition-all">
-                    Lanjutkan Soal ➔
+                <input type="text" id="student-name" placeholder="Masukkan nama kamu di sini..." 
+                    class="w-full px-6 py-4 text-lg border-2 border-yellow-300 rounded-2xl focus:outline-none focus:border-yellow-500 transition-all bg-white/50">
+                <button onclick="showInstructions()" class="w-full bg-yellow-500 hover:bg-yellow-600 text-white font-bold py-4 rounded-2xl text-xl shadow-lg transition-all active:scale-95">
+                    Mulai Tes Sekarang! 🚀
                 </button>
             </div>
         </div>
 
-        <!-- Overlay Petunjuk Awal -->
-        <div id="instructions-overlay" class="fixed inset-0 z-50 flex items-center justify-center p-4 hidden-screen bg-black/40 backdrop-blur-sm">
-            <div class="glass-popup p-8 max-w-lg w-full animate__animated animate__fadeInUp">
-                <h2 class="text-2xl font-bold text-gray-800 mb-4 flex items-center gap-2">
-                    <span class="bg-yellow-400 p-2 rounded-lg text-white">📝</span> Petunjuk
-                </h2>
-                <ul class="space-y-3 text-gray-800 mb-8 font-medium">
-                    <li class="flex gap-3"><span class="text-orange-500 font-bold">1.</span> <span>Bacalah setiap pertanyaan dengan saksama.</span></li>
-                    <li class="flex gap-3"><span class="text-orange-500 font-bold">2.</span> <span>Pilihlah satu jawaban yang paling menggambarkan dirimu.</span></li>
-                    <li class="flex gap-3"><span class="text-orange-500 font-bold">3.</span> <span>Jawablah dengan jujur sesuai kebiasaanmu.</span></li>
+        <!-- Screen: Petunjuk Pengerjaan -->
+        <div id="instructions-overlay" class="fixed inset-0 z-50 flex items-center justify-center p-4 full-overlay hidden-screen">
+            <div class="glass-card p-8 max-w-lg w-full animate__animated animate__bounceIn">
+                <h2 class="text-2xl font-bold text-gray-800 mb-4 flex items-center gap-2">📝 Petunjuk Pengerjaan</h2>
+                <ul class="space-y-3 text-gray-700 mb-8 font-medium">
+                    <li class="flex gap-3"><span class="text-yellow-500 font-bold">1.</span> <span>Bacalah setiap pertanyaan dengan saksama.</span></li>
+                    <li class="flex gap-3"><span class="text-yellow-500 font-bold">2.</span> <span>Pilihlah jawaban yang <strong>paling menggambarkan diri Anda</strong>.</span></li>
+                    <li class="flex gap-3"><span class="text-yellow-500 font-bold">3.</span> <span>Jawablah dengan jujur sesuai kebiasaan Anda.</span></li>
+                    <li class="flex gap-3"><span class="text-yellow-500 font-bold">4.</span> <span>Tidak ada jawaban benar atau salah dalam tes ini.</span></li>
                 </ul>
                 <button onclick="startTest()" class="w-full bg-green-500 hover:bg-green-600 text-white font-bold py-4 rounded-2xl text-xl shadow-lg transition-all active:scale-95">
-                    Siap, Mulai! 🏁
+                    Saya Mengerti, Ayo Mulai! 🏁
+                </button>
+            </div>
+        </div>
+
+        <!-- Pop-up Bagian Baru -->
+        <div id="section-modal" class="fixed inset-0 z-[60] flex items-center justify-center p-4 full-overlay hidden-screen">
+            <div class="glass-card p-10 max-w-sm w-full text-center animate__animated animate__zoomIn">
+                <div id="section-icon-box" class="w-20 h-20 rounded-2xl flex items-center justify-center mx-auto mb-4 text-5xl bg-blue-50">
+                    <span id="section-icon">📚</span>
+                </div>
+                <h3 class="text-blue-500 font-bold text-xs uppercase tracking-widest mb-1">Bagian Baru</h3>
+                <h2 id="section-title" class="text-2xl font-bold text-gray-800 mb-6 leading-tight">...</h2>
+                <button onclick="closeSectionModal()" class="w-full bg-gray-800 text-white font-bold py-3 rounded-xl shadow-lg transition-all active:scale-95">
+                    Lanjutkan ➔
                 </button>
             </div>
         </div>
 
         <!-- Screen 2: Test -->
-        <div id="test-screen" class="glass-card p-8 w-full max-w-2xl hidden-screen animate__animated animate__fadeIn">
-            <div class="flex justify-between items-center mb-6">
-                <span class="bg-blue-100 text-blue-600 px-4 py-1 rounded-full font-bold" id="question-counter">Soal 1/30</span>
-                <span id="user-display" class="font-bold text-gray-800"></span>
+        <div id="test-screen" class="glass-card p-8 hidden-screen animate__animated animate__fadeIn">
+            <div class="flex justify-between items-center mb-2">
+                <span class="bg-blue-100 text-blue-600 px-4 py-1 rounded-full font-bold text-sm" id="question-counter">Soal 1/30</span>
+                <span id="user-display" class="font-bold text-gray-600 text-sm"></span>
             </div>
-            <div class="w-full bg-gray-200/50 rounded-full h-3 mb-8 overflow-hidden">
+            <div id="section-tag" class="text-[10px] font-black text-blue-400 uppercase tracking-widest mb-6">KATEGORI</div>
+            
+            <div class="w-full bg-gray-200 rounded-full h-3 mb-8">
                 <div id="progress-bar" class="progress-bar bg-blue-500 h-3 rounded-full" style="width: 3.33%"></div>
             </div>
-            <div id="question-container" class="mb-8">
-                <div id="current-section-tag" class="text-xs font-bold text-blue-500 uppercase tracking-tighter mb-2">Bagian 1</div>
-                <h2 id="question-text" class="text-2xl font-bold text-gray-800 mb-8 leading-tight">...</h2>
+
+            <div id="question-container" class="animate__animated">
+                <h2 id="question-text" class="text-xl md:text-2xl font-bold text-gray-800 mb-8 leading-tight text-center">...</h2>
                 <div class="grid gap-4">
-                    <div onclick="handleAnswer('V')" class="option-btn p-5 border-2 border-purple-200 rounded-2xl flex items-center gap-4 group shadow-sm">
-                        <div class="w-10 h-10 bg-purple-500 text-white rounded-full flex items-center justify-center font-bold">A</div>
-                        <span id="opt-v" class="text-lg font-semibold text-gray-800">...</span>
+                    <div onclick="handleAnswer('V')" class="option-btn p-5 bg-purple-50 border-2 border-purple-100 rounded-2xl flex items-center gap-4">
+                        <div class="w-10 h-10 bg-purple-500 text-white rounded-full flex-shrink-0 flex items-center justify-center font-bold">A</div>
+                        <span id="opt-v" class="text-lg font-semibold text-purple-900 leading-tight">...</span>
                     </div>
-                    <div onclick="handleAnswer('A')" class="option-btn p-5 border-2 border-green-200 rounded-2xl flex items-center gap-4 group shadow-sm">
-                        <div class="w-10 h-10 bg-green-500 text-white rounded-full flex items-center justify-center font-bold">B</div>
-                        <span id="opt-a" class="text-lg font-semibold text-gray-800">...</span>
+                    <div onclick="handleAnswer('A')" class="option-btn p-5 bg-emerald-50 border-2 border-emerald-100 rounded-2xl flex items-center gap-4">
+                        <div class="w-10 h-10 bg-emerald-500 text-white rounded-full flex-shrink-0 flex items-center justify-center font-bold">B</div>
+                        <span id="opt-a" class="text-lg font-semibold text-emerald-900 leading-tight">...</span>
                     </div>
-                    <div onclick="handleAnswer('K')" class="option-btn p-5 border-2 border-orange-200 rounded-2xl flex items-center gap-4 group shadow-sm">
-                        <div class="w-10 h-10 bg-orange-500 text-white rounded-full flex items-center justify-center font-bold">C</div>
-                        <span id="opt-k" class="text-lg font-semibold text-gray-800">...</span>
+                    <div onclick="handleAnswer('K')" class="option-btn p-5 bg-orange-50 border-2 border-orange-100 rounded-2xl flex items-center gap-4">
+                        <div class="w-10 h-10 bg-orange-500 text-white rounded-full flex-shrink-0 flex items-center justify-center font-bold">C</div>
+                        <span id="opt-k" class="text-lg font-semibold text-orange-900 leading-tight">...</span>
                     </div>
                 </div>
             </div>
         </div>
 
         <!-- Screen 3: Results -->
-        <div id="result-screen" class="glass-card p-8 w-full max-w-2xl hidden-screen animate__animated animate__bounceIn">
+        <div id="result-screen" class="glass-card p-8 hidden-screen animate__animated animate__bounceIn">
             <div class="text-center mb-8">
-                <h2 class="text-3xl font-bold text-gray-800 mb-2">Hore, Selesai! 🎉</h2>
+                <h2 class="text-3xl font-bold text-gray-800 mb-2">Hasil Analisis 🎉</h2>
                 <p id="result-user" class="text-xl text-blue-600 font-bold mb-4"></p>
-                <div id="dominant-tag" class="inline-block px-6 py-2 rounded-full text-white font-bold text-lg mb-4 shadow-lg">...</div>
+                <div id="dominant-tag" class="inline-block px-8 py-3 rounded-full text-white font-bold text-lg mb-4 shadow-xl">...</div>
             </div>
 
-            <div class="grid grid-cols-3 gap-4 mb-8 text-center">
-                <div class="bg-purple-100 p-4 rounded-2xl border-2 border-purple-200">
-                    <div class="text-3xl">👁️</div>
-                    <div class="font-bold text-purple-800">Visual</div>
-                    <div id="perc-v" class="text-2xl font-black text-purple-600">0%</div>
+            <div class="grid grid-cols-3 gap-3 mb-8 text-center">
+                <div class="bg-purple-50 p-4 rounded-2xl border-2 border-purple-100">
+                    <div class="text-3xl mb-1">👁️</div>
+                    <div class="font-bold text-purple-800 text-xs">Visual</div>
+                    <div id="perc-v" class="text-xl font-black text-purple-600">0%</div>
                 </div>
-                <div class="bg-green-100 p-4 rounded-2xl border-2 border-green-200">
-                    <div class="text-3xl">👂</div>
-                    <div class="font-bold text-green-800">Auditori</div>
-                    <div id="perc-a" class="text-2xl font-black text-green-600">0%</div>
+                <div class="bg-emerald-50 p-4 rounded-2xl border-2 border-emerald-100">
+                    <div class="text-3xl mb-1">👂</div>
+                    <div class="font-bold text-emerald-800 text-xs">Auditori</div>
+                    <div id="perc-a" class="text-xl font-black text-emerald-600">0%</div>
                 </div>
-                <div class="bg-orange-100 p-4 rounded-2xl border-2 border-orange-200">
-                    <div class="text-3xl">✋</div>
-                    <div class="font-bold text-orange-800">Kinestetik</div>
-                    <div id="perc-k" class="text-2xl font-black text-orange-600">0%</div>
+                <div class="bg-orange-50 p-4 rounded-2xl border-2 border-orange-100">
+                    <div class="text-3xl mb-1">✋</div>
+                    <div class="font-bold text-orange-800 text-xs">Kinestetik</div>
+                    <div id="perc-k" class="text-xl font-black text-orange-600">0%</div>
                 </div>
             </div>
 
-            <div class="bg-white/80 p-6 rounded-2xl border-2 border-white mb-6">
-                <h3 class="font-bold text-gray-800 mb-3">💡 Penjelasan Hasil</h3>
-                <div id="result-desc" class="text-gray-800 leading-relaxed text-sm space-y-3"></div>
+            <div class="bg-white/80 p-6 rounded-3xl border-2 border-white mb-6">
+                <h3 class="font-bold text-gray-800 mb-3 flex items-center gap-2">💡 Penjelasan Kamu:</h3>
+                <p id="result-desc" class="text-gray-700 leading-relaxed font-medium"></p>
             </div>
 
-            <button onclick="location.reload()" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-4 rounded-2xl text-xl shadow-lg transition-all active:scale-95">Coba Lagi 🔄</button>
+            <button onclick="location.reload()" class="w-full bg-gray-800 text-white font-bold py-4 rounded-2xl text-xl shadow-lg transition-all active:scale-95">Ulangi Tes 🔄</button>
         </div>
+
     </div>
 
     <script>
-        const sections = {
-            0: { title: "Bagian 1: Kebiasaan Mempelajari Hal Baru", icon: "🛠️" },
-            5: { title: "Bagian 2: Cara Berkomunikasi & Ekspresi", icon: "🗣️" },
-            10: { title: "Bagian 3: Preferensi Hiburan & Informasi", icon: "🎬" },
-            15: { title: "Bagian 4: Daya Ingat & Konsentrasi", icon: "🧠" },
-            20: { title: "Bagian 5: Interaksi Sosial & Respon Emosi", icon: "🤝" },
-            25: { title: "Bagian 6: Pengambilan Keputusan & Kebiasaan", icon: "⚖️" }
-        };
-
         const questions = [
-            // Bagian 1
-            { q: "Ketika saya mengoperasikan peralatan baru, saya biasanya :", a: "Membaca petunjuknya terlebih dahulu", b: "Mendengarkan penjelasan dari seseorang yang pernah menggunakannya", c: "Menggunakannya langsung, saya bisa belajar ketika menggunakannya" },
-            { q: "Ketika saya perlu petunjuk untuk bepergian, saya biasanya :", a: "Melihat map atau peta", b: "Bertanya denah atau arah ke orang lain", c: "Menggunakan kompas dan mengikutinya" },
-            { q: "Ketika saya baru memasak, saya biasanya melakukan :", a: "Mengikuti petunjuk resep tertulis", b: "Meminta penjelasan kepada seorang teman", c: "Mengikuti naluri, mencicipi selagi memasaknya" },
-            { q: "Jika saya mengajar seseorang tentang sesuatu yang baru, saya cenderung untuk :", a: "Menulis instruksi untuk mereka", b: "Memberikan penjelasan secara lisan", c: "Memperagakan terlebih dahulu, kemudian meminta mereka untuk mempraktekkannya" },
-            { q: "Saya cenderung mengatakan: ", a: "Lihat bagaimana saya melakukannya", b: "Dengarkan penjelasan saya", c: "Silahkan dikerjakan" },
-            
-            // Bagian 2
-            { q: "Selama waktu luang, saya paling menikmati saat :", a: "Pergi ke museum atau perpustakaan", b: "Mendengarkan musik dan berbincang dengan teman-teman saya", c: "Berolahraga atau mengerjakan apa saja" },
-            { q: "Ketika saya pergi berbelanja pakaian, saya cenderung untuk :", a: "Membayangkan apakah pakaian tersebut cocok untuk saya", b: "Meminta rekomendasi dengan karyawan toko", c: "Mencoba pakaian dan melihat kecocokannya" },
-            { q: "Saat merencanakan liburan, saya biasanya :", a: "Membaca banyak informasi tempat berlibur di internet atau brosur", b: "Meminta rekomendasi dari teman-teman", c: "Membayangkan akan seperti apa jika berada di sana" },
-            { q: "Jika saya ingin membeli mobil baru, saya akan :", a: "Membaca ulasan di internet, koran, dan majalah", b: "Membahas apa yang saya butuhkan dengan teman-teman", c: "Mencoba banyak jenis mobil yang berbeda" },
-            { q: "Ketika saya sedang belajar keterampilan baru, saya paling senang :", a: "Melihat apa yang pengajar lakukan", b: "Menanyakan ke pengajar tentang apa yang seharusnya saya lakukan", c: "Mencoba dan mempraktekkannya secara langsung" },
-
-            // Bagian 3
-            { q: "Jika saya memilih makanan pada daftar menu, saya cenderung untuk :", a: "Membayangkan makanannya akan seperti apa", b: "Menanyakan rekomendasi menu", c: "Membayangkan seperti apa rasa makanan itu" },
-            { q: "Ketika saya mendengarkan pertunjukan sebuah band, saya cenderung untuk :", a: "Melihat anggota band dan orang lain di antara para penonton", b: "Mendengarkan lirik dan nada", c: "Terbawa dalam suasana dan musik" },
-            { q: "Ketika saya berkonsentrasi, saya paling sering :", a: "Fokus pada kata-kata atau gambar-gambar di depan saya", b: "Membahas masalah dan memikirkan solusi yang mungkin dapat dilakukan", c: "Banyak bergerak, bermain dengan pena dan pensil, atau menyentuh sesuatu" },
-            { q: "Saya memilih peralatan rumah tangga, berdasarkan :", a: "Warnanya dan bagaimana penampilannya", b: "Penjelasan dari salesnya", c: "Tekstur peralatan tersebut dan bagaimana rasanya ketika menyentuhnya" },
-            { q: "Saya mudah mengingat dan memahami sesuatu, dengan cara :", a: "Melihat sesuatu", b: "Mendengarkan sesuatu", c: "Melakukan sesuatu" },
-
-            // Bagian 4
-            { q: "Ketika saya cemas, saya akan :", a: "Membayangkan kemungkinan terburuk", b: "Memikirkan hal yang paling mengkhawatirkan", c: "Tidak bisa duduk tenang, terus menerus berkeliling, dan memegang sesuatu" },
-            { q: "Saya dapat mengingat orang lain, karena :", a: "Penampilan mereka", b: "Apa yang mereka katakan kepada saya", c: "Bagaimana cara mereka memperlakukan saya" },
-            { q: "Saat gagal ujian, saya biasanya :", a: "Menulis banyak catatan perbaikan", b: "Membahas catatan saya sendiri atau dengan orang lain", c: "Membuat kemajuan belajar dengan memperbaiki jawaban" },
-            { q: "Ketika menjelaskan sesuatu, saya cenderung :", a: "Menunjukkan kepada mereka apa yang saya maksud", b: "Menjelaskan kepada mereka dengan berbagai cara sampai mereka mengerti", c: "Memotivasi mereka untuk mencoba dan menyampaikan ide saya ketika mereka mengerjakan" },
-            { q: "Saya sangat suka :", a: "Menonton film, fotografi, melihat seni atau mengamati orang-orang sekitar", b: "Mendengarkan musik, radio atau bincang-bincang dengan teman-teman", c: "Berperan serta dalam kegiatan olahraga, menikmati makanan yang disajikan, atau menari" },
-
-            // Bagian 5
-            { q: "Sebagian besar waktu luang, saya habiskan :", a: "Menonton televisi atau menonton film", b: "Mengobrol dengan teman-teman", c: "Melakukan aktivitas fisik atau membuat sesuatu" },
-            { q: "Ketika pertama kali bertemu orang baru, saya biasanya :", a: "Membayangkan kegiatan yang akan dilakukan", b: "Berbicara dengan mereka melalui telepon", c: "Mencoba melakukan sesuatu bersama-sama, misalnya suatu kegiatan atau makan bersama" },
-            { q: "Saya memperhatikan seseorang, melalui :", a: "Tampilannya dan pakaiannya", b: "Suara dan cara berbicaranya", c: "Tingkah lakunya" },
-            { q: "Jika saya marah, saya cenderung untuk :", a: "Terus mengingat hal yang membuat saya marah", b: "Menyampaikan ke orang-orang sekitar tentang perasaan saya", c: "Menunjukkan kemarahan saya, misalnya : menghentakkan kaki, membanting pintu, dan lainnya" },
-            { q: "Saya merasa lebih mudah untuk mengingat :", a: "Wajah", b: "Nama", c: "Hal-hal yang telah saya lakukan" },
-
-            // Bagian 6
-            { q: "Saya dapat mengetahui seseorang melakukan kebohongan, jika :", a: "Mereka menghindari kontak mata", b: "Perubahan suara mereka", c: "Mereka menunjukkan perilaku yang aneh" },
-            { q: "Ketika saya bertemu dengan teman lama :", a: "Saya berkata 'Senang bertemu denganmu!'", b: "Saya berkata 'Senang mendengar kabar tentangmu!'", c: "Saya memberi mereka pelukan atau jabat tangan" },
-            { q: "Saya mudah mengingat sesuatu, dengan cara :", a: "Menulis catatan atau menyimpan materi", b: "Mengucapkan dan mengulang poin penting di pikiran saya", c: "Melakukan dan mempraktikkan secara langsung" },
-            { q: "Jika saya mengeluh tentang barang rusak yang sudah dibeli, saya akan memilih untuk :", a: "Menulis surat pengaduan", b: "Menyampaikan keluhan melalui telepon", c: "Mengembalikannya ke toko atau mengirimkannya ke kantor pusat" },
-            { q: "Saya cenderung mengatakan :", a: "Saya paham apa yang anda maksud", b: "Saya mendengar apa yang anda katakan", c: "Saya tahu bagaimana yang Anda rasakan" }
+            // Bagian 1. Kebiasaan Mempelajari Hal Baru
+            { s: "Kebiasaan Mempelajari Hal Baru", i: "🛠️", q: "Ketika saya mengoperasikan peralatan baru, saya biasanya :", a: "Membaca petunjuknya terlebih dahulu", b: "Mendengarkan penjelasan orang lain", c: "Langsung mencobanya sendiri" },
+            { s: "Kebiasaan Mempelajari Hal Baru", i: "🛠️", q: "Ketika saya perlu petunjuk untuk bepergian, saya biasanya :", a: "Melihat map atau peta", b: "Bertanya denah atau arah ke orang lain", c: "Menggunakan kompas dan mengikutinya" },
+            { s: "Kebiasaan Mempelajari Hal Baru", i: "🛠️", q: "Ketika saya baru memasak, saya biasanya melakukan :", a: "Mengikuti petunjuk resep tertulis", b: "Meminta penjelasan kepada seorang teman", c: "Mengikuti naluri, mencicipi selagi memasaknya" },
+            { s: "Kebiasaan Mempelajari Hal Baru", i: "🛠️", q: "Jika saya mengajar seseorang tentang sesuatu yang baru, saya cenderung untuk :", a: "Menulis instruksi untuk mereka", b: "Memberikan penjelasan secara lisan", c: "Memperagakan terlebih dahulu" },
+            { s: "Kebiasaan Mempelajari Hal Baru", i: "🛠️", q: "Saya cenderung mengatakan:", a: "Lihat bagaimana saya melakukannya", b: "Dengarkan penjelasan saya", c: "Silahkan dikerjakan" },
+            // Bagian 2. Cara Berkomunikasi & Ekspresi
+            { s: "Cara Berkomunikasi & Ekspresi", i: "🗣️", q: "Selama waktu luang, saya paling menikmati saat :", a: "Pergi ke museum atau perpustakaan", b: "Mendengarkan musik dan berbincang", c: "Berolahraga atau mengerjakan apa saja" },
+            { s: "Cara Berkomunikasi & Ekspresi", i: "🗣️", q: "Ketika saya pergi berbelanja pakaian, saya cenderung untuk :", a: "Membayangkan apakah pakaian tersebut cocok", b: "Meminta rekomendasi dengan karyawan toko", c: "Mencoba pakaian dan melihat kecocokannya" },
+            { s: "Cara Berkomunikasi & Ekspresi", i: "🗣️", q: "Saat merencanakan liburan, saya biasanya :", a: "Membaca informasi tempat berlibur", b: "Meminta rekomendasi dari teman-teman", c: "Membayangkan akan seperti apa di sana" },
+            { s: "Cara Berkomunikasi & Ekspresi", i: "🗣️", q: "Jika saya ingin membeli mobil baru, saya akan :", a: "Membaca ulasan di internet atau majalah", b: "Membahas kebutuhan dengan teman-teman", c: "Mencoba banyak jenis mobil berbeda" },
+            { s: "Cara Berkomunikasi & Ekspresi", i: "🗣️", q: "Ketika saya sedang belajar keterampilan baru, saya paling senang :", a: "Melihat apa yang pengajar lakukan", b: "Menanyakan ke pengajar instruksinya", c: "Mencoba dan mempraktekkannya langsung" },
+            // Bagian 3. Preferensi Hiburan & Informasi
+            { s: "Preferensi Hiburan & Informasi", i: "🎬", q: "Jika saya memilih makanan pada daftar menu, saya cenderung untuk :", a: "Membayangkan makanannya akan seperti apa", b: "Menanyakan rekomendasi menu", c: "Membayangkan seperti apa rasa makanan itu" },
+            { s: "Preferensi Hiburan & Informasi", i: "🎬", q: "Ketika saya mendengarkan pertunjukan sebuah band, saya cenderung untuk :", a: "Melihat anggota band dan penonton", b: "Mendengarkan lirik dan nada", c: "Terbawa dalam suasana dan musik" },
+            { s: "Preferensi Hiburan & Informasi", i: "🎬", q: "Ketika saya berkonsentrasi, saya paling sering :", a: "Fokus pada kata-kata atau gambar", b: "Membahas masalah dan memikirkan solusi", c: "Banyak bergerak atau memegang sesuatu" },
+            { s: "Preferensi Hiburan & Informasi", i: "🎬", q: "Saya memilih peralatan rumah tangga, berdasarkan :", a: "Warnanya dan bagaimana penampilannya", b: "Penjelasan dari salesnya", c: "Tekstur dan bagaimana rasanya disentuh" },
+            { s: "Preferensi Hiburan & Informasi", i: "🎬", q: "Saya mudah mengingat dan memahami sesuatu, dengan cara :", a: "Melihat sesuatu", b: "Mendengarkan sesuatu", c: "Melakukan sesuatu" },
+            // Bagian 4. Daya Ingat & Konsentrasi
+            { s: "Daya Ingat & Konsentrasi", i: "🧠", q: "Ketika saya cemas, saya akan :", a: "Membayangkan kemungkinan terburuk", b: "Memikirkan hal yang paling mengkhawatirkan", c: "Tidak bisa duduk tenang" },
+            { s: "Daya Ingat & Konsentrasi", i: "🧠", q: "Saya dapat mengingat orang lain, karena :", a: "Penampilan mereka", b: "Apa yang mereka katakan kepada saya", c: "Bagaimana cara mereka memperlakukan saya" },
+            { s: "Daya Ingat & Konsentrasi", i: "🧠", q: "Saat gagal ujian, saya biasanya :", a: "Menulis banyak catatan perbaikan", b: "Membahas catatan saya dengan orang lain", c: "Memperbaiki jawaban dengan mencoba lagi" },
+            { s: "Daya Ingat & Konsentrasi", i: "🧠", q: "Ketika menjelaskan sesuatu, saya cenderung :", a: "Menunjukkan kepada mereka apa yang saya maksud", b: "Menjelaskan dengan suara sampai mereka mengerti", c: "Memotivasi mereka untuk mencoba langsung" },
+            { s: "Daya Ingat & Konsentrasi", i: "🧠", q: "Saya sangat suka :", a: "Menonton film atau fotografi", b: "Mendengarkan musik atau radio", c: "Berperan serta dalam olahraga atau menari" },
+            // Bagian 5. Interaksi Sosial & Respon Emosi
+            { s: "Interaksi Sosial & Respon Emosi", i: "🤝", q: "Sebagian besar waktu luang, saya habiskan :", a: "Menonton televisi atau menonton film", b: "Mengobrol dengan teman-teman", c: "Melakukan aktivitas fisik atau membuat sesuatu" },
+            { s: "Interaksi Sosial & Respon Emosi", i: "🤝", q: "Ketika pertama kali bertemu orang baru, saya biasanya :", a: "Membayangkan kegiatan yang akan dilakukan", b: "Berbicara dengan mereka melalui telepon", c: "Mencoba melakukan sesuatu bersama" },
+            { s: "Interaksi Sosial & Respon Emosi", i: "🤝", q: "Saya memperhatikan seseorang, melalui :", a: "Tampilannya dan pakaiannya", b: "Suara dan cara berbicaranya", c: "Tingkah lakunya" },
+            { s: "Interaksi Sosial & Respon Emosi", i: "🤝", q: "Jika saya marah, saya cenderung untuk :", a: "Terus mengingat hal yang membuat marah", b: "Menyampaikan perasaan ke orang sekitar", c: "Menunjukkan kemarahan secara fisik" },
+            { s: "Interaksi Sosial & Respon Emosi", i: "🤝", q: "Saya merasa lebih mudah untuk mengingat :", a: "Wajah", b: "Nama", c: "Hal-hal yang telah saya lakukan" },
+            // Bagian 6. Pengambilan Keputusan & Kebiasaan
+            { s: "Pengambilan Keputusan & Kebiasaan", i: "⚖️", q: "Seseorang melakukan kebohongan, jika :", a: "Mereka menghindari kontak mata", b: "Perubahan suara mereka", c: "Mereka menunjukkan perilaku yang aneh" },
+            { s: "Pengambilan Keputusan & Kebiasaan", i: "⚖️", q: "Ketika saya bertemu dengan teman lama :", a: "Saya berkata 'Senang bertemu denganmu!'", b: "Saya berkata 'Senang dengar kabar darimu!'", c: "Saya memberi mereka pelukan atau jabat tangan" },
+            { s: "Pengambilan Keputusan & Kebiasaan", i: "⚖️", q: "Saya mudah mengingat sesuatu, dengan cara :", a: "Menulis catatan atau menyimpan materi", b: "Mengucapkan poin penting di pikiran", c: "Melakukan dan mempraktikkan secara langsung" },
+            { s: "Pengambilan Keputusan & Kebiasaan", i: "⚖️", q: "Jika saya mengeluh tentang barang rusak, saya akan :", a: "Menulis surat pengaduan", b: "Menyampaikan keluhan melalui telepon", c: "Mengembalikannya langsung ke toko" },
+            { s: "Pengambilan Keputusan & Kebiasaan", i: "⚖️", q: "Saya cenderung mengatakan :", a: "Saya paham apa yang anda maksud", b: "Saya mendengar apa yang anda katakan", c: "Saya tahu bagaimana yang Anda rasakan" }
         ];
 
         let currentStep = 0;
         let userName = "";
         let scores = { V: 0, A: 0, K: 0 };
+        let lastSection = "";
 
         function showInstructions() {
             const nameInput = document.getElementById('student-name').value;
-            if (!nameInput.trim()) return;
+            if (!nameInput.trim()) {
+                alert("Masukkan namamu dulu ya!");
+                return;
+            }
             userName = nameInput;
             document.getElementById('instructions-overlay').classList.remove('hidden-screen');
         }
 
         function startTest() {
             document.getElementById('instructions-overlay').classList.add('hidden-screen');
-            document.getElementById('user-display').innerText = "Halo, " + userName + "!";
+            document.getElementById('user-display').innerText = "Hi, " + userName + "!";
             document.getElementById('login-screen').classList.add('hidden-screen');
             document.getElementById('test-screen').classList.remove('hidden-screen');
-            checkSection(true);
+            checkSectionChange();
         }
 
-        function checkSection(isStart = false) {
-            if (sections[currentStep]) {
-                const section = sections[currentStep];
-                document.getElementById('section-title').innerText = section.title;
-                document.getElementById('section-icon').innerText = section.icon;
-                document.getElementById('section-overlay').classList.remove('hidden-screen');
-            } else if (isStart) {
+        function checkSectionChange() {
+            const currentQ = questions[currentStep];
+            if (currentQ.s !== lastSection) {
+                showSectionModal(currentQ.s, currentQ.i);
+                lastSection = currentQ.s;
+            } else {
                 showQuestion();
             }
         }
 
-        function closeSectionPopup() {
-            document.getElementById('section-overlay').classList.add('hidden-screen');
+        function showSectionModal(title, icon) {
+            document.getElementById('section-title').innerText = title;
+            document.getElementById('section-icon').innerText = icon;
+            document.getElementById('section-modal').classList.remove('hidden-screen');
+        }
+
+        function closeSectionModal() {
+            document.getElementById('section-modal').classList.add('hidden-screen');
             showQuestion();
         }
 
         function showQuestion() {
             const q = questions[currentStep];
+            const container = document.getElementById('question-container');
+            
+            // Animasi Zoom dari Tengah menggunakan Animate.css
+            container.classList.remove('animate__zoomIn');
+            void container.offsetWidth; // Trigger reflow
+            container.classList.add('animate__zoomIn');
+
             document.getElementById('question-counter').innerText = `Soal ${currentStep + 1}/${questions.length}`;
+            document.getElementById('section-tag').innerText = q.s;
             document.getElementById('progress-bar').style.width = `${((currentStep + 1) / questions.length) * 100}%`;
             document.getElementById('question-text').innerText = q.q;
             document.getElementById('opt-v').innerText = q.a;
             document.getElementById('opt-a').innerText = q.b;
             document.getElementById('opt-k').innerText = q.c;
-
-            // Update current section label
-            for (let i = currentStep; i >= 0; i--) {
-                if (sections[i]) {
-                    document.getElementById('current-section-tag').innerText = sections[i].title;
-                    break;
-                }
-            }
         }
 
         function handleAnswer(type) {
             scores[type]++;
             currentStep++;
+
             if (currentStep < questions.length) {
-                if (sections[currentStep]) checkSection();
-                else showQuestion();
+                checkSectionChange();
             } else {
                 showResults();
             }
@@ -341,47 +320,29 @@
             document.getElementById('perc-a').innerText = pA + "%";
             document.getElementById('perc-k').innerText = pK + "%";
 
+            let dominant = 'V';
+            if (scores.A > scores.V && scores.A > scores.K) dominant = 'A';
+            if (scores.K > scores.V && scores.K > scores.A) dominant = 'K';
+
             const tag = document.getElementById('dominant-tag');
             const desc = document.getElementById('result-desc');
-            const body = document.getElementById('main-body');
 
-            const explanation = {
-                V: "<b>Visual (V):</b> Anda belajar terbaik melalui apa yang Anda lihat. Gunakan diagram, peta pikiran, warna-warni dalam catatan, video, dan grafik untuk membantu proses belajar.",
-                A: "<b>Auditori (A):</b> Anda belajar terbaik melalui apa yang Anda dengar. Rekaman kuliah, diskusi kelompok, membaca dengan suara keras, dan mendengarkan penjelasan lisan akan sangat membantu.",
-                K: "<b>Kinestetik (K):</b> Anda belajar terbaik dengan melakukan dan bergerak. Praktik langsung, simulasi, eksperimen, dan belajar sambil bergerak adalah cara paling efektif."
-            };
-
-            const maxVal = Math.max(pV, pA, pK);
-            let topScores = [];
-            if (Math.abs(maxVal - pV) < 10) topScores.push('V');
-            if (Math.abs(maxVal - pA) < 10) topScores.push('A');
-            if (Math.abs(maxVal - pK) < 10) topScores.push('K');
-
-            if (topScores.length > 1) {
-                body.className = "flex items-center justify-center p-4 bg-multimodal";
-                tag.innerText = "Gaya Belajar: Campuran (Multimodal)";
-                tag.className = "inline-block px-6 py-2 rounded-full text-white font-bold text-lg mb-4 bg-gradient-to-r from-pink-500 to-indigo-500 shadow-lg";
-                let content = `<p><b>Hebat!</b> Kamu punya gaya belajar campuran. Ini artinya kamu fleksibel dalam menyerap informasi!</p>`;
-                topScores.forEach(s => content += `<p class='bg-white/60 p-3 rounded-xl border border-gray-200'>${explanation[s]}</p>`);
-                desc.innerHTML = content;
+            if (Math.abs(pV - pA) < 10 && Math.abs(pV - pK) < 10) {
+                tag.innerText = "Campuran (Multimodal)";
+                tag.className = "inline-block px-8 py-3 rounded-full text-white font-bold text-lg mb-4 bg-gradient-to-r from-purple-500 via-emerald-500 to-orange-500 shadow-xl";
+                desc.innerText = "Kamu adalah pembelajar fleksibel! Kamu bisa belajar efektif dengan menggabungkan gambar, suara, maupun praktik langsung secara seimbang.";
+            } else if (dominant === 'V') {
+                tag.innerText = "Gaya Belajar: Visual";
+                tag.className = "inline-block px-8 py-3 rounded-full text-white font-bold text-lg mb-4 bg-purple-500 shadow-xl";
+                desc.innerText = "Kamu belajar paling efektif melalui penglihatan. Gunakan peta pikiran (mind map), warna pada catatan, dan video pembelajaran.";
+            } else if (dominant === 'A') {
+                tag.innerText = "Gaya Belajar: Auditori";
+                tag.className = "inline-block px-8 py-3 rounded-full text-white font-bold text-lg mb-4 bg-emerald-500 shadow-xl";
+                desc.innerText = "Kamu hebat dalam mendengarkan! Cobalah diskusi dengan teman atau membaca catatan dengan suara keras saat belajar.";
             } else {
-                let dominant = topScores[0];
-                if (dominant === 'V') {
-                    body.className = "flex items-center justify-center p-4 bg-visual";
-                    tag.innerText = "Gaya Belajar: Visual";
-                    tag.className = "inline-block px-6 py-2 rounded-full text-white font-bold text-lg mb-4 bg-purple-600 shadow-lg";
-                    desc.innerHTML = explanation.V;
-                } else if (dominant === 'A') {
-                    body.className = "flex items-center justify-center p-4 bg-auditori";
-                    tag.innerText = "Gaya Belajar: Auditori";
-                    tag.className = "inline-block px-6 py-2 rounded-full text-white font-bold text-lg mb-4 bg-emerald-600 shadow-lg";
-                    desc.innerHTML = explanation.A;
-                } else {
-                    body.className = "flex items-center justify-center p-4 bg-kinestetik";
-                    tag.innerText = "Gaya Belajar: Kinestetik";
-                    tag.className = "inline-block px-6 py-2 rounded-full text-white font-bold text-lg mb-4 bg-orange-600 shadow-lg";
-                    desc.innerHTML = explanation.K;
-                }
+                tag.innerText = "Gaya Belajar: Kinestetik";
+                tag.className = "inline-block px-8 py-3 rounded-full text-white font-bold text-lg mb-4 bg-orange-500 shadow-xl";
+                desc.innerText = "Kamu adalah pembelajar yang aktif! Belajarlah sambil melakukan praktik, simulasi, atau bahkan sambil bergerak agar materi mudah meresap.";
             }
         }
     </script>
